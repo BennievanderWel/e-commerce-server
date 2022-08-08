@@ -1,0 +1,12 @@
+{
+  "name": "e-commerce-server",
+  "version": "1.0.0",
+  "main": "server.ts",
+  "author": "Bennie van der Wel",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server": "^3.10.0",
+    "graphql": "^16.5.0",
+    "nodemon": "^2.0.19"
+  }
+}
