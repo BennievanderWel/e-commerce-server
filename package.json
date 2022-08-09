@@ -5,7 +5,9 @@
   "author": "Bennie van der Wel",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack --config ./webpack/webpack.development.js"
+    "dev": "run-p dev:build:watch dev:watch",
+    "dev:build:watch": "webpack --config ./webpack/webpack.development.js",
+    "dev:watch": "nodemon ./build/server.js"
   },
   "dependencies": {
     "apollo-server": "^3.10.0",
