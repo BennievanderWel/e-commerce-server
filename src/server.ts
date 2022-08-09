@@ -1,7 +1,5 @@
-const { ApolloServer, gql } = require("apollo-server");
-const {
-  ApolloServerPluginLandingPageLocalDefault,
-} = require("apollo-server-core");
+import { ApolloServer, gql } from 'apollo-server'
+import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core'
 
 const typeDefs = gql`
   type Book {
@@ -12,33 +10,38 @@ const typeDefs = gql`
   type Query {
     books: [Book]
   }
-`;
+`
 
 const books = [
   {
-    title: "The Awakening",
-    author: "Kate Chopin",
+    title: 'The Awakening',
+    author: 'Kate Chopin',
   },
   {
-    title: "City of Glass",
-    author: "Paul Auster",
+    title: 'City of Glass',
+    author: 'Paul Auster',
   },
-];
+]
 
 const resolvers = {
   Query: {
     books: () => books,
   },
-};
+}
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
   csrfPrevention: true,
-  cache: "bounded",
+  cache: 'bounded',
   plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
-});
+})
 
 server.listen().then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`);
-});
+  console.log(`🚀  Server ready at ${url}`)
+})
+
+if (module.hot) {
+  module.hot.accept()
+  module.hot.dispose(() => server.stop())
+}
