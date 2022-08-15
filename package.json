@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "run-p dev:build:watch watch",
     "dev:build:watch": "webpack --config ./webpack/webpack.development.js",
-    "watch": "nodemon ./build/server.js",
+    "watch": "nodemon ./dist/server.js",
     "prod": "run-p prod:build",
     "prod:build": "webpack --config ./webpack/webpack.production.js"
   },
