@@ -1,6 +1,6 @@
-import { ApolloServer, gql } from 'apollo-server'
-import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core'
-import specs from '../data/specs.json'
+import { ApolloServer, gql } from 'apollo-server';
+import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
+import specs from '../data/specs.json';
 
 const typeDefs = gql`
   type Pokemon {
@@ -49,13 +49,13 @@ const typeDefs = gql`
   type Query {
     pokemon: [Pokemon]
   }
-`
+`;
 
 const resolvers = {
   Query: {
     pokemon: () => specs,
   },
-}
+};
 
 const server = new ApolloServer({
   typeDefs,
@@ -63,13 +63,13 @@ const server = new ApolloServer({
   csrfPrevention: true,
   cache: 'bounded',
   plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
-})
+});
 
 server.listen().then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`)
-})
+  console.log(`🚀  Server ready at ${url}`);
+});
 
 if (module.hot) {
-  module.hot.accept()
-  module.hot.dispose(() => server.stop())
+  module.hot.accept();
+  module.hot.dispose(() => server.stop());
 }
